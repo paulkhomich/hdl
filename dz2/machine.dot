@@ -1,0 +1,85 @@
+digraph G {
+    shutdown [label="ВР\nr/0 y/0", shape=doublecircle];
+    shutdown1 [label="ВР\nr/0 y/0", shape=circle];
+    broken [label="СР\nr/3 y/0", shape=circle, color=red, style=bold];
+    rr [label="РР\nr/1 y/0", shape=circle];
+    rr1 [label="РР\nr/1 y/1", shape=circle];
+    rr0 [label="РР\nr/1 y/0", shape=circle];
+    rr11 [label="РР\nr/1 y/2", shape=circle];
+    rr111 [label="РР\nr/1 y/3", shape=circle];
+    rr110 [label="РР\nr/1 y/3", shape=circle];
+    
+    out_h0_0 [label="РВ\nr/2 y/0", shape=circle]
+    out_h0_1 [label="РВ\nr/2 y/1", shape=circle]
+    out_h0_2 [label="РВ\nr/2 y/1", shape=circle]
+    out_h0_3 [label="РВ\nr/2 y/0", shape=circle]
+    
+    out_h1_0 [label="РВ\nr/2 y/3", shape=circle]
+    out_h1_1 [label="РВ\nr/2 y/2", shape=circle]
+    out_h1_2 [label="РВ\nr/2 y/2", shape=circle]
+    
+    
+    shutdown -> shutdown1 [label=" b"];
+    shutdown -> shutdown [label=" b̅"];
+    shutdown1 -> broken [label=" x > 1"];
+    shutdown1 -> rr [label=" x ≤ 1"];
+    rr -> rr1 [label=" b"];
+    rr -> rr0 [label=" b̅"];
+    rr1 -> rr0 [label=" b̅"];
+    rr0 -> rr1 [label=" b"];
+    rr1 -> rr11 [label=" b"];
+    rr0 -> rr0 [label=" b̅"];
+    rr11 -> rr111 [label=" b"];
+    rr11 -> rr110 [label=" b̅"];
+    rr111 -> rr111 [label=" b"];
+    rr111 -> out_h0_0 [label=" b̅"];
+    rr110 -> rr0 [label=" b̅"];
+    rr110 -> broken [label=" b"];
+    
+    out_h0_0 -> out_h0_0 [label=" (x = 0) & b̅"];
+    out_h0_0 -> out_h0_1 [label=" (x = 1) & b̅"];
+    out_h0_0 -> out_h0_2 [label=" (x = 2) & b̅"];
+    out_h0_0 -> out_h0_3 [label=" (x = 3) & b̅"];
+    out_h0_0 -> out_h1_0 [label=" x ≠ 4 & b"];
+    out_h0_0 -> shutdown [label=" x = 4"];
+    
+    out_h0_1 -> out_h0_1 [label=" (x = 0) & b̅"];
+    out_h0_1 -> out_h0_2 [label=" (x = 1) & b̅"];
+    out_h0_1 -> out_h0_3 [label=" (x = 2) & b̅"];
+    out_h0_1 -> out_h0_0 [label=" (x = 3) & b̅"];
+    out_h0_1 -> out_h1_0 [label=" x ≠ 4 & b"];
+    out_h0_1 -> shutdown [label=" x = 4"];
+    
+    out_h0_2 -> out_h0_2 [label=" (x = 0) & b̅"];
+    out_h0_2 -> out_h0_3 [label=" (x = 1) & b̅"];
+    out_h0_2 -> out_h0_0 [label=" (x = 2) & b̅"];
+    out_h0_2 -> out_h0_1 [label=" (x = 3) & b̅"];
+    out_h0_2 -> out_h1_0 [label=" x ≠ 4 & b"];
+    out_h0_2 -> shutdown [label=" x = 4"];
+    
+    out_h0_3 -> out_h0_3 [label=" (x = 0) & b̅"];
+    out_h0_3 -> out_h0_0 [label=" (x = 1) & b̅"];
+    out_h0_3 -> out_h0_1 [label=" (x = 2) & b̅"];
+    out_h0_3 -> out_h0_2 [label=" (x = 3) & b̅"];
+    out_h0_3 -> out_h1_0 [label=" x ≠ 4 & b"];
+    out_h0_3 -> shutdown [label=" x = 4"];
+    
+    
+    out_h1_0 -> out_h1_0 [label=" (x = 0 | x = 3) & b"];
+    out_h1_0 -> out_h1_1 [label=" (x = 1) & b"];
+    out_h1_0 -> out_h1_2 [label=" (x = 2) & b"];
+    out_h1_0 -> out_h0_0 [label=" x ≠ 4 & b̅"];
+    out_h1_0 -> shutdown [label=" x = 4"];
+    
+    out_h1_1 -> out_h1_1 [label=" (x = 0 | x = 3) & b"];
+    out_h1_1 -> out_h1_2 [label=" (x = 1) & b"];
+    out_h1_1 -> out_h1_0 [label=" (x = 2) & b"];
+    out_h1_1 -> out_h0_0 [label=" x ≠ 4 & b̅"];
+    out_h1_1 -> shutdown [label=" x = 4"];
+    
+    out_h1_2 -> out_h1_2 [label=" (x = 0 | x = 3) & b"];
+    out_h1_2 -> out_h1_0 [label=" (x = 1) & b"];
+    out_h1_2 -> out_h1_1 [label=" (x = 2) & b"];
+    out_h1_2 -> out_h0_0 [label=" x ≠ 4 & b̅"];
+    out_h1_2 -> shutdown [label=" x = 4"];
+}
