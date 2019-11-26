@@ -2,6 +2,6 @@
 
 Icarus Verilog + GTKWave
 ```sh
-$ cd ./dz4
+$ cd dz4
 $ make
 ```
