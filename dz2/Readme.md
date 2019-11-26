@@ -1,6 +1,6 @@
 # Калькулятор над очередью
 Icarus Verilog + GTKWave
 ```sh
-$ cd streamcalc
+$ cd ./dz2
 $ make
 ```
